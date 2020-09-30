@@ -1,0 +1,98 @@
+(ns counter
+  (:require [reagent.core :as r]
+            [reagent.dom :as rd]))
+
+(def root (js/document.querySelector "#root"))
+
+(def app (js/document.querySelector "#app"))
+
+
+
+(def today (.toDateString (new js/Date)))
+
+(defn render [greeting]
+  (print greeting)
+  (set! (.-innerHTML root) (str "<h1>Hello World it's " today " today </h1>")))
+
+(def click-count (r/atom 0))
+
+(defn counting-component
+  []
+  [:div
+   "The state has a VALUE : " @click-count
+   [:input
+    {:type "button"
+     :value "Click me!"
+     :on-click (fn [] (swap! click-count inc))}]])
+
+(render "Hello World")
+
+
+(rd/render [counting-component] app)
+
+Hello World
+"<h1>Hello World it's Wed Sep 30 2020 today </h1>"
+cljs::counter=> 
+Hello World
+"<h1>Hello World it's Wed Sep 30 2020 today </h1>"
+cljs::counter=> 
+nil
+; ------ WARNING - :undeclared-ns ------------------------------------------------
+;  Resource: <eval>:1:2
+ No such namespace: rd, could not locate rd.cljs, rd.cljc, or JavaScript source providing "rd"
+--------------------------------------------------------------------------------
+
+; ------ WARNING - :undeclared-var -----------------------------------------------
+;  Resource: <eval>:1:2
+ Use of undeclared Var rd/render
+--------------------------------------------------------------------------------
+
+cljs::counter=> 
+#object[TypeError TypeError: Cannot read property 'render' of undefined]
+cljs::counter=> 
+#object[TypeError TypeError: Cannot read property 'render' of undefined]
+cljs::counter=> 
+
+; Timeout while waiting for result.
+cljs::counter=> 
+#object[counter.counting_component]
+cljs::counter=> 
+Hello World
+"<h1>Hello World it's Wed Sep 30 2020 today </h1>"
+cljs::counter=> 
+#object[counter.counting_component]
+cljs::counter=> 
+#object[counter.counting_component]
+cljs::counter=> 
+#'counter/root
+cljs::counter=> 
+#object[counter.counting_component]
+cljs::counter=> 
+#object[Error Error: Assert failed: Invalid Hiccup form: [nil]
+
+(valid-tag? tag)]
+cljs::counter=> 
+Hello World
+"<h1>Hello World it's Wed Sep 30 2020 today </h1>"
+cljs::counter=> 
+Hello World
+#object[counter.counting_component]
+cljs::counter=> 
+Hello World
+"<h1>Hello World it's Wed Sep 30 2020 today </h1>"
+cljs::counter=> 
+Hello World
+#object[DOMException NotFoundError: Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node.]
+cljs::counter=> 
+#'counter/app
+cljs::counter=> 
+#object[counter.counting_component]
+cljs::counter=> 
+#'counter/counting-component
+cljs::counter=> 
+#'counter/counting-component
+cljs::counter=> 
+#'counter/counting-component
+cljs::counter=> 
+#object[counter.counting_component]
+cljs::counter=> 
