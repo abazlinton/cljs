@@ -1,11 +1,11 @@
-(defn hello-world []
-  (print "Hello World" ))
+(defn hello-world [name]
+  (print "Hello World" name (+ 2 1)))
 
-(hello-world)
+(hello-world "Alex")
 
 (:name {:name "Alex", :age 50})
 
-(take 5 (range))
+(map (fn [x] (* 2 x)) (filter even? (take 5 (range))))
 
 (def root (js/document.querySelector "#root"))
 
