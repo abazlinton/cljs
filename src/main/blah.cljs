@@ -8,11 +8,11 @@
 (defn hello-world [name]
   (print "Hello" name (+ 1 3)))
 
+(hello-world "Alex")
+
 (:name {:name "Alex", :age 50})
 
 (map #(* 2 %) (filter even? (take 5 (range))))
-
-(first `(1, 2, 3))
 
 (def today (.toDateString (new js/Date)))
 
@@ -22,7 +22,6 @@
   (set! (.-innerHTML root) (str "<h1>Hello World it's " today " today </h1>")))
 
 (def app (js/document.querySelector "#app"))
-
 
 (def counter (r/atom 0))
 
