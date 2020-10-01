@@ -1,37 +1,35 @@
-(ns counter
-  (:require [reagent.core :as r]
-            [reagent.dom :as rd]))
+(defn hello-world []
+  (print "Hello World" ))
 
-(def root (js/document.querySelector "#root"))
-(def app (js/document.querySelector "#app"))
-
-(defn hello-world [name]
-  (print "Hello" name (+ 1 3)))
-
-(hello-world "Alex")
+(hello-world)
 
 (:name {:name "Alex", :age 50})
 
-(map #(* 2 %) (filter even? (take 5 (range))))
-
-(def today (.toDateString (new js/Date)))
+(take 5 (range))
 
 (def root (js/document.querySelector "#root"))
 
+(def today (.toDateString (new js/Date)))
+
 (defn render []
-  (set! (.-innerHTML root) (str "<h1>Hello World it's " today " today </h1>")))
+  (set! (.-innerHTML root) (str "<h1>It's " today " today </h1>")))
+
+(render)
+
+(ns counter
+  (:require [reagent.core :as r]
+            [reagent.dom :as rd]))
 
 (def app (js/document.querySelector "#app"))
 
 (def counter (r/atom 0))
 
 (defn counting-component
-  []
-  [:div
-   "Counter: " @counter
-   [:button
-    {:on-click (fn [] (swap! counter inc))}
-    "Increment COUNTER"]])
+ []
+ [:div
+  "Counter: " @counter
+  [:button
+   {:on-click (fn [] (swap! counter inc))}
+   "Increment counter"]])
 
-(render)
 (rd/render [counting-component] app)
